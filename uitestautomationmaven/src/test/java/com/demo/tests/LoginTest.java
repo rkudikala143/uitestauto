@@ -9,12 +9,13 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 import com.aventstack.extentreports.Status;
 import com.demo.base.BasePage;
+import com.demo.base.Homepage;
 import com.demo.pages.ForgotPasswordPage;
 import com.demo.pages.LoginPage;
 import com.demo.testrailIntegration.APIException;
 
 public class LoginTest extends BasePage {
-
+  Homepage homePage;
 	LoginPage loginPage;
 	ForgotPasswordPage forgotPasswordPage;
 	@BeforeSuite
@@ -49,18 +50,30 @@ public class LoginTest extends BasePage {
 	
 	@Test(priority = 1)
 	public void verify_user_should_also_have_access_to_the_Forgot_Passwordfrom_the_login_page_to_reset_the_password() {
+	try {
+		homePage = new Homepage(driver);
 		loginPage = new LoginPage(driver);
 		forgotPasswordPage = new ForgotPasswordPage(driver);
+		
 		//verify the title of the home page
-		testlog = reports.createTest("verifyLoginFunctionalityWithValidData");
-		testlog.log(Status.PASS, "Click on Login link");
+		testlog = reports.createTest("verify_user_should_also_have_access_to_the_Forgot_Passwordfrom_the_login_page_to_reset_the_password");
+		testLogPass("verify the home Page title : "+ getTitle());
+		assertEqual("Demo Web Shop", getTitle());
+		testLogPass("Click on Login link");
 		loginPage.clickLoginLink();
-		testlog.log(Status.PASS, "Click on Forgot Password link");
+		testLogPass("verify Login Page Title : "+ getTitle());
+		assertEqual(getTitle(), "Demo Web Shop. Login");
+		testLogPass( "Click on Forgot Password link");
 		loginPage.clickForgotPasswordLink();
-		testlog.log(Status.PASS, "Verify Forgot Password Page Title : " + getTitle());
+		testLogPass("Verify Forgot Password Page Title : " + getTitle());
 		Assert.assertEquals(getTitle(), "Demo Web Shop. Password Recovery");
-		testlog.log(Status.PASS, "Verify Forgot Password Page Header : Password recovery");
+		testLogPass( "Verify Forgot Password Page Header : Password recovery");
 		forgotPasswordPage.verifyHeader("Password recovery");
+		homePage.clickLogo();
+	} catch (Exception e) {
+	      testLogFail(e.getMessage());
+	      e.printStackTrace();
+	}
 	}
 	
 	@AfterSuite

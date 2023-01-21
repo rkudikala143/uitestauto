@@ -12,14 +12,11 @@ public class ForgotPasswordPage {
 	public ForgotPasswordPage(WebDriver driver) {
 		this.driver = driver;
 	}
-	
-		By h1 = By.cssSelector("div.page-title h1");
 
-		public void verifyHeader(String string) {
-			// TODO Auto-generated method stub
-			BasePage.getText(h1);
-		}
-	
-	
+	By h1 = By.cssSelector("div.page-title h1");
 
+	public void verifyHeader(String string) {
+		// TODO Auto-generated method stub
+		BasePage.getText(h1);
+	}
 }

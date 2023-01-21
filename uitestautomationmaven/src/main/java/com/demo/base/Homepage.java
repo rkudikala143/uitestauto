@@ -1,13 +1,20 @@
 package com.demo.base;
 
-public class Homepage {
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class Homepage  {
+	WebDriver driver;
 	
 	
-	public static void main(String[] args) {
-		
-		for (int i = 0; i < args.length; i++) {
-			System.out.println("hello "+ i);
-		}
+	public Homepage(WebDriver driver) {
+		this.driver = driver;
 	}
 
+	By logo = By.cssSelector("div.header-logo a img");
+	
+	
+	public void clickLogo() {
+		BasePage.click(logo);
+	}
 }
