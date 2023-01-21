@@ -41,7 +41,8 @@ public class LoginPage {
 	By emailtxt = By.id("Email");
 	By passtxt = By.id("Password");
 	By loginbtn = By.cssSelector("input.button-1.login-button");
-
+   By forgotpasswordlink = By.cssSelector("span.forgot-password a");
+   By logoutlink = By.className("ico-logout");
 	/*
 	 * Page Methods for Page Objects
 	 */
@@ -63,5 +64,14 @@ public class LoginPage {
 	}
 	public boolean isRegisterLinkDisplayed(){
 		return driver.findElement(registerLink).isDisplayed();
+	}
+	
+	public void clickForgotPasswordLink() {
+		BasePage.click(forgotpasswordlink);
+	}
+
+	public void clickLogout() {
+		// TODO Auto-generated method stub
+		BasePage.click(logoutlink);
 	}
 }

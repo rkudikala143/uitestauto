@@ -17,6 +17,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.ITestResult;
@@ -167,6 +168,10 @@ public class BasePage {
 	 public void assertTrue(boolean istrue) {
 		 Assert.assertTrue(istrue);
 	 }
+	 public static String	getText(By ele){
+			return driver.findElement(ele).getText();
+		}
+		
 	 
 	public void tearDown() {
 		driver.close();
