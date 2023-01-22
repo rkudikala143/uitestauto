@@ -2,9 +2,9 @@ package com.demo.tests;
 
 import java.io.IOException;
 
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
@@ -16,73 +16,200 @@ import com.demo.pages.RegisterPage;
 import com.demo.testrailIntegration.APIException;
 
 /*
- * Ramesh Kudikala
+ * Ramya Kumari
  */
 public class RegisterTest extends BasePage {
 	HomePage homePage;
 	LoginPage loginPage;
-  RegisterPage registerPage;
+	RegisterPage registerPage;
+
 	@BeforeSuite
 	public void invokeBrowser() {
 		setUp();
 	}
 
-	@Test(enabled = true)
-	public void Verify_if_that_user_able_to_see_Register_link_in_landing_page_and_login_page() throws IOException, APIException {
+	@Test(enabled = false)
+	public void Verify_if_that_user_able_to_see_Register_link_in_landing_page_and_login_page()
+			throws IOException, APIException {
 		try {
 			homePage = new HomePage(driver);
 			loginPage = new LoginPage(driver);
-			testlog = reports.createTest("Verify_if_that_user_able_to_see_Register_link_in_landing_page_and_login_page");
-			testLogPass("Verifying the Home Page Title :" +getTitle());
+			testlog = reports
+					.createTest("Verify_if_that_user_able_to_see_Register_link_in_landing_page_and_login_page");
+			testLogPass("Verifying the Home Page Title :" + getTitle());
 			assertEqual(getTitle(), "Demo Web Shop");
-			testLogPass("Verifying the Register link displayed in Home page: " +homePage.isRegisterLinkDisplayed() );
+			testLogPass("Verifying the Register link displayed in Home page: " + homePage.isRegisterLinkDisplayed());
 			Assert.assertTrue(homePage.isRegisterLinkDisplayed());
 			testLogPass("Click on Login Link");
 			homePage.clickLoginLink();
 			String loginTitle = loginPage.getTitle();
-			testLogPass("Verify the Login Page Title : " +loginTitle );
+			testLogPass("Verify the Login Page Title : " + loginTitle);
 			assertEqual(loginTitle, "Demo Web Shop. Login");
 			assertTrue(homePage.isRegisterLinkDisplayed());
-			testLogPass("Verifying the Register link displayed in Login Page : " +homePage.isRegisterLinkDisplayed() );
+			testLogPass("Verifying the Register link displayed in Login Page : " + homePage.isRegisterLinkDisplayed());
 			testLogPass("Click on Logo");
 			homePage.clickLogo();
-		//	addResultForTestCase("18", 1, "Register test Pass");
+			// addResultForTestCase("18", 1, "Register test Pass");
 		} catch (Exception e) {
-		//	addResultForTestCase("18", 5, e.getMessage());
+			// addResultForTestCase("18", 5, e.getMessage());
 			testLogFail(e.getMessage());
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Test(enabled = false)
-	public void Verify_if_that_user_able_to_redirect_to_register_page_up_on_click() throws IOException, APIException{
+	public void Verify_if_that_user_able_to_redirect_to_register_page_up_on_click() throws IOException, APIException {
 		try {
 			homePage = new HomePage(driver);
 			loginPage = new LoginPage(driver);
 			registerPage = new RegisterPage(driver);
 			testlog = reports.createTest("Verify_if_that_user_able_to_redirect_to_register_page_up_on_click");
 			String homePageTitle = homePage.getTitle();
-			testlog.log(Status.PASS, "Verifying the Home Page Title :" +homePageTitle);
-			Assert.assertEquals(homePageTitle, "Demo Web Shop");
-			testlog.log(Status.PASS, "Verifying the Register link displayed in Home page: " +homePage.isRegisterLinkDisplayed() );
-			Assert.assertTrue(homePage.isRegisterLinkDisplayed());
-			testlog.log(Status.PASS, "Click on Register Link");
+			testLogPass("Verifying the Home Page Title :" + homePageTitle);
+			assertEqual(homePageTitle, "Demo Web Shop");
+			testLogPass("Verifying the Register link displayed in Home page: " + homePage.isRegisterLinkDisplayed());
+			assertTrue(homePage.isRegisterLinkDisplayed());
+			testLogPass("Click on Register Link");
 			homePage.clickRegisterLink();
-			String registerTitle =registerPage.getTitle();
-			Assert.assertEquals(registerTitle, "Demo Web Shop. Registr");
+			String registerTitle = registerPage.getTitle();
+			assertEqual(registerTitle, "Demo Web Shop. Registr");
 			homePage.clickLogo();
-			addResultForTestCase("19", 1, "Register test Pass");
+			// addResultForTestCase("19", 1, "Register test Pass");
 		} catch (AssertionError e) {
 			System.out.println("=============Jumping to catch block==========");
-			addResultForTestCase("19", 5, e.getMessage());
+			// addResultForTestCase("19", 5, e.getMessage());
 			testlog.log(Status.FAIL, e.getMessage());
 		}
 	}
-	
+
+	@Test(enabled = true, priority = 0)
+	public void Verify_user_enter_invalid_email_system_throw_the_error_msg() throws IOException, APIException {
+		try {
+			homePage = new HomePage(driver);
+			loginPage = new LoginPage(driver);
+			registerPage = new RegisterPage(driver);
+			testlog = reports.createTest("Verify_user_enter_invalid_email_system_throw_the_error_msg");
+			String homePageTitle = homePage.getTitle();
+			testLogPass("Verifying the Home Page Title :" + homePageTitle);
+			assertEqual(homePageTitle, "Demo Web Shop");
+			testLogPass("Verifying the Register link displayed in Home page: " + homePage.isRegisterLinkDisplayed());
+			assertTrue(homePage.isRegisterLinkDisplayed());
+			testLogPass("Click on Register Link");
+			homePage.clickRegisterLink();
+			String registerTitle = registerPage.getTitle();
+			assertEqual(registerTitle, "Demo Web Shop. Register");
+			registerPage.enterEmailAddress(prop.getProperty("email_1"));
+			registerPage.clickOnRegisterbtn();
+			registerPage.emailErrorMessage();
+			testLogPass("got the email error msg");
+			String errorEmailMsg = driver
+					.findElement(By.xpath(
+							"/html/body/div[4]/div[1]/div[4]/div[2]/form/div/div[2]/div[2]/div[2]/div[4]/span[2]/span"))
+					.getText();
+			Assert.assertEquals(errorEmailMsg, "Wrong email");
+			homePage.clickLogo();
+			// addResultForTestCase("19", 1, "Register test Pass");
+		} catch (AssertionError e) {
+			System.out.println("=============Jumping to catch block==========");
+			// addResultForTestCase("19", 5, e.getMessage());
+			testlog.log(Status.FAIL, e.getMessage());
+		}
+	}
+
+	@Test(enabled = true, priority = 1)
+	public void Verify_system_allow_to_enter_AZ_and_az_into_FirstName_and_LastName_field()
+			throws IOException, APIException {
+		try {
+			homePage = new HomePage(driver);
+			loginPage = new LoginPage(driver);
+			registerPage = new RegisterPage(driver);
+			testlog = reports.createTest("Verify_system_allow_to_enter_AZ_and_az_into_FirstName_and_LastName_field");
+			String homePageTitle = homePage.getTitle();
+			testlog.log(Status.PASS, "Verifying the Home Page Title :" + homePageTitle);
+			assertEqual(homePageTitle, "Demo Web Shop");
+			testLogPass("Verifying the Register link displayed in Home page: " + homePage.isRegisterLinkDisplayed());
+			assertTrue(homePage.isRegisterLinkDisplayed());
+			testLogPass("Click on Register Link");
+			homePage.clickRegisterLink();
+			String registerTitle = registerPage.getTitle();
+			assertEqual(registerTitle, "Demo Web Shop. Register");
+			registerPage.enterFirstName(prop.getProperty("firstName"));
+			registerPage.enterLastName(prop.getProperty("lastName"));
+			testLogPass("System allows the alphabets A-Z/a-z into FirstName and LastName fields");
+			homePage.clickLogo();
+			// addResultForTestCase("19", 1, "Register test Pass");
+		} catch (AssertionError e) {
+			System.out.println("=============Jumping to catch block==========");
+			// addResultForTestCase("19", 5, e.getMessage());
+			testlog.log(Status.FAIL, e.getMessage());
+		}
+	}
+
+	@Test(enabled = true, priority = 2)
+	public void Verify_System_allows_to_enter_1uppercase_or_1_lowercase() throws IOException, APIException {
+		try {
+			homePage = new HomePage(driver);
+			loginPage = new LoginPage(driver);
+			registerPage = new RegisterPage(driver);
+			testlog = reports.createTest("Verify_System_allows_to_enter_1uppercase_or_1_lowercase");
+			String homePageTitle = homePage.getTitle();
+			testlog.log(Status.PASS, "Verifying the Home Page Title :" + homePageTitle);
+			assertEqual(homePageTitle, "Demo Web Shop");
+			testLogPass("Verifying the Register link displayed in Home page: " + homePage.isRegisterLinkDisplayed());
+			assertTrue(homePage.isRegisterLinkDisplayed());
+			testLogPass("Click on Register Link");
+			homePage.clickRegisterLink();
+			String registerTitle = registerPage.getTitle();
+			assertEqual(registerTitle, "Demo Web Shop. Register");
+			registerPage.enterPassword(prop.getProperty("Password"));
+			testLogPass("Password field allows upper and lowercase letters ");
+			homePage.clickLogo();
+			// addResultForTestCase("19", 1, "Register test Pass");
+		} catch (AssertionError e) {
+			System.out.println("=============Jumping to catch block==========");
+			// addResultForTestCase("19", 5, e.getMessage());
+			testlog.log(Status.FAIL, e.getMessage());
+		}
+	}
+
+	@Test(enabled = true, priority = 3)
+
+	public void Verify_system_allow_to_enter_password_min_length_should_be_6_characters()
+			throws IOException, APIException {
+		try {
+			homePage = new HomePage(driver);
+			loginPage = new LoginPage(driver);
+			registerPage = new RegisterPage(driver);
+			testlog = reports.createTest("Verify_system_allow_to_enter_password_min_length_should_be_6_characters");
+			String homePageTitle = homePage.getTitle();
+			testlog.log(Status.PASS, "Verifying the Home Page Title :" + homePageTitle);
+			assertEqual(homePageTitle, "Demo Web Shop");
+			testLogPass("Verifying the Register link displayed in Home page: " + homePage.isRegisterLinkDisplayed());
+			assertTrue(homePage.isRegisterLinkDisplayed());
+			testLogPass("Click on Register Link");
+			homePage.clickRegisterLink();
+			String registerTitle = registerPage.getTitle();
+			assertEqual(registerTitle, "Demo Web Shop. Register");
+			registerPage.enterPassword(prop.getProperty("Password_1"));
+			testLogPass("Password allows min 6 characters ");
+			registerPage.clickOnRegisterbtn();
+			String errorPassMsg = driver
+					.findElement(By.xpath(
+							"/html/body/div[4]/div[1]/div[4]/div[2]/form/div/div[2]/div[3]/div[2]/div[1]/span[2]/span"))
+					.getText();
+			Assert.assertEquals(errorPassMsg, "The password should have at least 6 characters.");
+			homePage.clickLogo();
+			// addResultForTestCase("19", 1, "Register test Pass");
+		} catch (AssertionError e) {
+			System.out.println("=============Jumping to catch block==========");
+			// addResultForTestCase("19", 5, e.getMessage());
+			testlog.log(Status.FAIL, e.getMessage());
+		}
+	}
+
 	@AfterSuite
 	public void closeBrowser() {
 		reports.flush();
 		tearDown();
 	}
-
 }
