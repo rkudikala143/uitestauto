@@ -28,7 +28,7 @@ public class RegisterTest extends BasePage {
 		setUp();
 	}
 
-	@Test(enabled = false)
+	@Test(description = "Verify if that user able to see Register link in landing page and login page", priority = 4)
 	public void Verify_if_that_user_able_to_see_Register_link_in_landing_page_and_login_page()
 			throws IOException, APIException {
 		try {
@@ -49,15 +49,15 @@ public class RegisterTest extends BasePage {
 			testLogPass("Verifying the Register link displayed in Login Page : " + homePage.isRegisterLinkDisplayed());
 			testLogPass("Click on Logo");
 			homePage.clickLogo();
-			// addResultForTestCase("18", 1, "Register test Pass");
+			addResultForTestCase("1", 1, "");
 		} catch (Exception e) {
-			// addResultForTestCase("18", 5, e.getMessage());
+			addResultForTestCase("1", 5, e.getMessage());
 			testLogFail(e.getMessage());
 			e.printStackTrace();
 		}
 	}
 
-	@Test(enabled = false)
+	@Test(priority = 5)
 	public void Verify_if_that_user_able_to_redirect_to_register_page_up_on_click() throws IOException, APIException {
 		try {
 			homePage = new HomePage(driver);
@@ -74,10 +74,10 @@ public class RegisterTest extends BasePage {
 			String registerTitle = registerPage.getTitle();
 			assertEqual(registerTitle, "Demo Web Shop. Registr");
 			homePage.clickLogo();
-			// addResultForTestCase("19", 1, "Register test Pass");
+			addResultForTestCase("2", 1, "");
 		} catch (AssertionError e) {
 			System.out.println("=============Jumping to catch block==========");
-			// addResultForTestCase("19", 5, e.getMessage());
+			addResultForTestCase("2", 5, e.getMessage());
 			testlog.log(Status.FAIL, e.getMessage());
 		}
 	}
@@ -108,10 +108,10 @@ public class RegisterTest extends BasePage {
 					.getText();
 			Assert.assertEquals(errorEmailMsg, "Wrong email");
 			homePage.clickLogo();
-			// addResultForTestCase("19", 1, "Register test Pass");
+			addResultForTestCase("7", 1, "Register test Pass");
 		} catch (AssertionError e) {
 			System.out.println("=============Jumping to catch block==========");
-			// addResultForTestCase("19", 5, e.getMessage());
+			addResultForTestCase("7", 5, e.getMessage());
 			testlog.log(Status.FAIL, e.getMessage());
 		}
 	}
@@ -137,10 +137,10 @@ public class RegisterTest extends BasePage {
 			registerPage.enterLastName(prop.getProperty("lastName"));
 			testLogPass("System allows the alphabets A-Z/a-z into FirstName and LastName fields");
 			homePage.clickLogo();
-			// addResultForTestCase("19", 1, "Register test Pass");
+			addResultForTestCase("8", 1, "Register test Pass");
 		} catch (AssertionError e) {
 			System.out.println("=============Jumping to catch block==========");
-			// addResultForTestCase("19", 5, e.getMessage());
+			addResultForTestCase("8", 5, e.getMessage());
 			testlog.log(Status.FAIL, e.getMessage());
 		}
 	}
@@ -164,10 +164,10 @@ public class RegisterTest extends BasePage {
 			registerPage.enterPassword(prop.getProperty("Password"));
 			testLogPass("Password field allows upper and lowercase letters ");
 			homePage.clickLogo();
-			// addResultForTestCase("19", 1, "Register test Pass");
+			addResultForTestCase("9", 1, "Register test Pass");
 		} catch (AssertionError e) {
 			System.out.println("=============Jumping to catch block==========");
-			// addResultForTestCase("19", 5, e.getMessage());
+			addResultForTestCase("9", 5, e.getMessage());
 			testlog.log(Status.FAIL, e.getMessage());
 		}
 	}
@@ -199,14 +199,13 @@ public class RegisterTest extends BasePage {
 					.getText();
 			Assert.assertEquals(errorPassMsg, "The password should have at least 6 characters.");
 			homePage.clickLogo();
-			// addResultForTestCase("19", 1, "Register test Pass");
+			addResultForTestCase("10", 1, "Register test Pass");
 		} catch (AssertionError e) {
 			System.out.println("=============Jumping to catch block==========");
-			// addResultForTestCase("19", 5, e.getMessage());
+			addResultForTestCase("10", 5, e.getMessage());
 			testlog.log(Status.FAIL, e.getMessage());
 		}
 	}
-
 	@AfterSuite
 	public void closeBrowser() {
 		reports.flush();
