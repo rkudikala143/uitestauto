@@ -48,10 +48,12 @@ public class LoginPage {
 	 */
 
 	public void clickLoginLink() {
+		BasePage.waitForElement(loginlink);
 		BasePage.click(loginlink);
 	}
 
 	public void enterEmailAddress(String email) {
+		BasePage.waitForElement(emailtxt);
 		BasePage.type(emailtxt, email);
 	}
 
@@ -72,6 +74,7 @@ public class LoginPage {
 
 	public void clickLogout() {
 		// TODO Auto-generated method stub
+		BasePage.waitForElement(logoutlink);
 		BasePage.click(logoutlink);
 	}
 }

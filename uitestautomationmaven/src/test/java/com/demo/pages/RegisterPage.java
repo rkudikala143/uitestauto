@@ -31,6 +31,7 @@ public class RegisterPage {
 	By fristNametxt=By.id("FirstName");
 	By lastNametxt = By.id("LastName");
 	By passTxt= By.id("Password");
+	
 	public boolean isRegisterLinkDisplayed(){
 		return driver.findElement(registerLink).isDisplayed();
 	}
