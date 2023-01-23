@@ -76,9 +76,5 @@ public class LoginTest extends BasePage {
 	}
 	}
 	
-	@AfterSuite
-	public void closeBrowser() {
-		reports.flush();
-		tearDown();
-	}
+	
 }
