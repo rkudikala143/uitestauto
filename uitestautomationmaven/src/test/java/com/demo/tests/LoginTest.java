@@ -1,8 +1,6 @@
 package com.demo.tests;
 
 import java.io.IOException;
-import java.util.Iterator;
-
 import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
@@ -41,15 +39,15 @@ public class LoginTest extends BasePage {
 			testlog.log(Status.PASS, "Click on Login button");
 			loginPage.clickLoginButton();
 			loginPage.clickLogout();
-		  //  addResultForTestCase("42", TEST_CASE_PASSED_STATUS, "");
+		    addResultForTestCase("538", TEST_CASE_PASSED_STATUS, "");
 		} catch (AssertionError e) {
 			testlog.log(Status.FAIL, e.getMessage());
-		//	addResultForTestCase("8", TEST_CASE_FAILED_STATUS, "");
+			addResultForTestCase("538", TEST_CASE_FAILED_STATUS, "");
 		}
 	}
 	
 	@Test(priority = 1)
-	public void verify_user_should_also_have_access_to_the_Forgot_Passwordfrom_the_login_page_to_reset_the_password() {
+	public void verify_user_should_also_have_access_to_the_Forgot_Passwordfrom_the_login_page_to_reset_the_password() throws IOException, APIException {
 	try {
 		homePage = new Homepage(driver);
 		loginPage = new LoginPage(driver);
@@ -70,8 +68,10 @@ public class LoginTest extends BasePage {
 		testLogPass( "Verify Forgot Password Page Header : Password recovery");
 		forgotPasswordPage.verifyHeader("Password recovery");
 		homePage.clickLogo();
+		   addResultForTestCase("540", TEST_CASE_PASSED_STATUS, "");
 	} catch (Exception e) {
 	      testLogFail(e.getMessage());
+	  	addResultForTestCase("540", TEST_CASE_FAILED_STATUS, "");
 	      e.printStackTrace();
 	}
 	}

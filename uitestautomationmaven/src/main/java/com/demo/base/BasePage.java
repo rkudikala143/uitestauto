@@ -38,10 +38,10 @@ import com.demo.testrailIntegration.APIException;
 import freemarker.template.SimpleDate;
 public class BasePage {
 	//Testrail Configuration
-    public static String TEST_RUN_ID                = "10";
-    public static String TESTRAIL_USERNAME          = "frontendautomation311@gmail.com";
-    public static String TESTRAIL_PASSWORD          = "BHglkc4z87cWtU4zbrSW";
-    public static String RAILS_ENGINE_URL           = "https://uiautomationtesting.testrail.io/";// testrail API
+    public static String TEST_RUN_ID                = "6";
+    public static String TESTRAIL_USERNAME          = "batch08dec@gmail.com";
+    public static String TESTRAIL_PASSWORD          = "469tLerrijFv10Xyq2ZB";
+    public static String RAILS_ENGINE_URL           = "https://demowebshopautomation.testrail.io/";// testrail API
     public static final int TEST_CASE_PASSED_STATUS = 1;
     public static final int TEST_CASE_FAILED_STATUS = 5;
 	public static WebDriver driver;
