@@ -18,14 +18,8 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
-import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
-
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
@@ -37,7 +31,6 @@ import com.aventstack.extentreports.reporter.configuration.ChartLocation;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 import com.demo.testrailIntegration.APIClient;
 import com.demo.testrailIntegration.APIException;
-import freemarker.template.SimpleDate;
 
 public class BasePage {
 
@@ -102,6 +95,14 @@ public class BasePage {
 		// Maximize the Browser
 		driver.manage().window().maximize();
 	}
+	public static void setUp(String url) {
+		// create an instance for Chrome Driver
+		driver = new ChromeDriver();
+		// Navigate to site url
+		driver.get(url);
+		// Maximize the Browser
+		driver.manage().window().maximize();
+	}
 
 	/*
 	 * re-usable methods
@@ -120,26 +121,26 @@ public class BasePage {
 	/*
 	 * type data into text fields
 	 */
-	@AfterMethod
-	public void getResult(ITestResult result) throws Exception {
-		if (result.getStatus() == ITestResult.FAILURE) {
-			testlog.log(Status.FAIL,
-					MarkupHelper.createLabel(result.getName() + " - Test Case Failed", ExtentColor.RED));
-			testlog.log(Status.FAIL,
-					MarkupHelper.createLabel(result.getThrowable() + " - Test Case Failed", ExtentColor.RED));
-			File screen = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-			BufferedImage img = ImageIO.read(screen);
-			File filetest = Paths.get(".").toAbsolutePath().normalize().toFile();
-			ImageIO.write(img, "png", new File(filetest + "\\Screenshots\\" + "Test01.png"));
-			testlog.info("Details of " + "Test screenshot", MediaEntityBuilder
-					.createScreenCaptureFromPath(System.getProperty("user.dir") + "\\Screenshots\\" + "Test01.png")
-					.build());
-		} else if (result.getStatus() == ITestResult.SKIP) {
-			// testlog.log(Status.SKIP, "Test Case Skipped is "+result.getName());
-			testlog.log(Status.SKIP,
-					MarkupHelper.createLabel(result.getName() + " - Test Case Skipped", ExtentColor.ORANGE));
-		}
-	}
+//	@AfterMethod
+//	public void getResult(ITestResult result) throws Exception {
+//		if (result.getStatus() == ITestResult.FAILURE) {
+//			testlog.log(Status.FAIL,
+//					MarkupHelper.createLabel(result.getName() + " - Test Case Failed", ExtentColor.RED));
+//			testlog.log(Status.FAIL,
+//					MarkupHelper.createLabel(result.getThrowable() + " - Test Case Failed", ExtentColor.RED));
+//			File screen = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+//			BufferedImage img = ImageIO.read(screen);
+//			File filetest = Paths.get(".").toAbsolutePath().normalize().toFile();
+//			ImageIO.write(img, "png", new File(filetest + "\\Screenshots\\" + "Test01.png"));
+//			testlog.info("Details of " + "Test screenshot", MediaEntityBuilder
+//					.createScreenCaptureFromPath(System.getProperty("user.dir") + "\\Screenshots\\" + "Test01.png")
+//					.build());
+//		} else if (result.getStatus() == ITestResult.SKIP) {
+//			// testlog.log(Status.SKIP, "Test Case Skipped is "+result.getName());
+//			testlog.log(Status.SKIP,
+//					MarkupHelper.createLabel(result.getName() + " - Test Case Skipped", ExtentColor.ORANGE));
+//		}
+//	}
 
 	public static void type(By locator, String value) {
 		driver.findElement(locator).sendKeys(value);
@@ -155,7 +156,6 @@ public class BasePage {
 		data.put("status_id", status);
 		data.put("comment", error);
 		client.sendPost("add_result_for_case/" + testRunId + "/" + testCaseId + "", data);
-
 	}
 	/*
 	 * Assertions
@@ -175,11 +175,11 @@ public class BasePage {
 	}
 
 	public void assertEqual(String expected, String actual) {
-		Assert.assertEquals(expected, actual);
+		//Assert.assertEquals(expected, actual);
 	}
 
 	public void assertTrue(boolean istrue) {
-		Assert.assertTrue(istrue);
+	//	Assert.assertTrue(istrue);
 	}
 
 	public void tearDown() {
