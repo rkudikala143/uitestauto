@@ -36,7 +36,7 @@ public class BasePage {
 	public static WebDriver driver;
 	public static Properties prop;
 	public static FileInputStream fis;
-	public static ExtentHtmlReporter htmlreport = new ExtentHtmlReporter("ExtentReport" + returnUniqueDate() + ".html");
+	public static ExtentHtmlReporter htmlreport = new ExtentHtmlReporter("src\\main\\resources\\reports\\"+"ExtentReport"+ ".html");
 	public static ExtentReports reports = new ExtentReports();
 
 	// This is the object of extentTest class, by which log is generate.
