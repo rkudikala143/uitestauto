@@ -4,7 +4,10 @@
   <test thread-count="5" name="Default test(failed)">
     <classes>
       <class name="com.demo.tests.LoginTest">
-      </class> <!-- com.demo.tests.LoginTest -->
+      <methods>
+      <include name="verifyLoginFunctionalityWithValidData"></include>
+      </methods>
+      </class> 
     </classes>
-  </test> <!-- Default test(failed) -->
-</suite> <!-- Failed suite [Default suite] -->
+  </test> 
+</suite>

@@ -21,16 +21,19 @@ public class LoginTest extends BasePage {
 	ForgotPasswordPage forgotPasswordPage;
 	@BeforeSuite
 	public void invoke() {
+		
 		setUp();
+		homePage = new Homepage(driver);
+		loginPage = new LoginPage(driver);
+		forgotPasswordPage = new ForgotPasswordPage(driver);
 	}
 	/*
 	 * All Login Page Scenarios or cases to be automated
 	 */
-	@Test (priority = 0)
+	@Test
 	public void verifyLoginFunctionalityWithValidData() throws IOException, APIException, InterruptedException {
 		try {
-			loginPage = new LoginPage(driver);
-			//verify the title of the home page
+				//verify the title of the home page
 			testlog = reports.createTest("verifyLoginFunctionalityWithValidData");
 			testlog.log(Status.PASS, "Click on Login link");
 			loginPage.clickLoginLink();
@@ -51,13 +54,10 @@ public class LoginTest extends BasePage {
 		}
 	}
 	
-	@Test(priority = 1, enabled = false)
+	@Test
 	public void verify_user_should_also_have_access_to_the_Forgot_Passwordfrom_the_login_page_to_reset_the_password() throws IOException, APIException {
 	try {
-		homePage = new Homepage(driver);
-		loginPage = new LoginPage(driver);
-		forgotPasswordPage = new ForgotPasswordPage(driver);
-		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+	
 		//verify the title of the home page
 		testlog = reports.createTest("verify_user_should_also_have_access_to_the_Forgot_Passwordfrom_the_login_page_to_reset_the_password");
 		testLogPass("verify the home Page title : "+ getTitle());
@@ -81,5 +81,10 @@ public class LoginTest extends BasePage {
 	}
 	}
 	
-	
+	@AfterSuite
+	public void closeBrowser() {
+		driver.close();
+		reports.flush();
+		
+	}
 }

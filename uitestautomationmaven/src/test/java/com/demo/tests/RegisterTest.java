@@ -23,12 +23,12 @@ public class RegisterTest extends BasePage {
 	LoginPage loginPage;
 	RegisterPage registerPage;
 
-	@BeforeSuite
-	public void invokeBrowser() {
-		setUp();
-	}
+//	@BeforeSuite
+//	public void invokeBrowser() {
+//		setUp();
+//	}
 
-	@Test(description = "Verify if that user able to see Register link in landing page and login page", priority = 4)
+	@Test(description = "Verify if that user able to see Register link in landing page and login page")
 	public void Verify_if_that_user_able_to_see_Register_link_in_landing_page_and_login_page()
 			throws IOException, APIException {
 		try {
@@ -57,7 +57,7 @@ public class RegisterTest extends BasePage {
 		}
 	}
 
-	@Test(priority = 5)
+	@Test
 	public void Verify_if_that_user_able_to_redirect_to_register_page_up_on_click() throws IOException, APIException {
 		try {
 			homePage = new HomePage(driver);
@@ -82,7 +82,7 @@ public class RegisterTest extends BasePage {
 		}
 	}
 
-	@Test(enabled = true, priority = 0)
+	@Test
 	public void Verify_user_enter_invalid_email_system_throw_the_error_msg() throws IOException, APIException {
 		try {
 			homePage = new HomePage(driver);
@@ -116,7 +116,7 @@ public class RegisterTest extends BasePage {
 		}
 	}
 
-	@Test(enabled = true, priority = 1)
+	@Test
 	public void Verify_system_allow_to_enter_AZ_and_az_into_FirstName_and_LastName_field()
 			throws IOException, APIException {
 		try {
@@ -145,7 +145,7 @@ public class RegisterTest extends BasePage {
 		}
 	}
 
-	@Test(enabled = true, priority = 2)
+	@Test
 	public void Verify_System_allows_to_enter_1uppercase_or_1_lowercase() throws IOException, APIException {
 		try {
 			homePage = new HomePage(driver);
@@ -172,7 +172,7 @@ public class RegisterTest extends BasePage {
 		}
 	}
 
-	@Test(enabled = true, priority = 3)
+	@Test
 
 	public void Verify_system_allow_to_enter_password_min_length_should_be_6_characters()
 			throws IOException, APIException {
@@ -209,6 +209,6 @@ public class RegisterTest extends BasePage {
 	@AfterSuite
 	public void closeBrowser() {
 		reports.flush();
-		tearDown();
+		driver.close();
 	}
 }
