@@ -23,11 +23,6 @@ public class RegisterTest extends BasePage {
 	LoginPage loginPage;
 	RegisterPage registerPage;
 
-//	@BeforeSuite
-//	public void invokeBrowser() {
-//		setUp();
-//	}
-
 	@Test(description = "Verify if that user able to see Register link in landing page and login page")
 	public void Verify_if_that_user_able_to_see_Register_link_in_landing_page_and_login_page()
 			throws IOException, APIException {
@@ -36,8 +31,8 @@ public class RegisterTest extends BasePage {
 			loginPage = new LoginPage(driver);
 			testlog = reports
 					.createTest("Verify_if_that_user_able_to_see_Register_link_in_landing_page_and_login_page");
-			testLogPass("Verifying the Home Page Title :" + getTitle());
-			assertEqual(getTitle(), "Demo Web Shop");
+			testLogPass("Verifying the Home Page Title :" + homePage.getTitle());
+			assertEqual(homePage.getTitle(), "Demo Web Shop");
 			testLogPass("Verifying the Register link displayed in Home page: " + homePage.isRegisterLinkDisplayed());
 			Assert.assertTrue(homePage.isRegisterLinkDisplayed());
 			testLogPass("Click on Login Link");
@@ -173,7 +168,6 @@ public class RegisterTest extends BasePage {
 	}
 
 	@Test
-
 	public void Verify_system_allow_to_enter_password_min_length_should_be_6_characters()
 			throws IOException, APIException {
 		try {
@@ -206,9 +200,5 @@ public class RegisterTest extends BasePage {
 			testlog.log(Status.FAIL, e.getMessage());
 		}
 	}
-	@AfterSuite
-	public void closeBrowser() {
-		reports.flush();
-		driver.close();
-	}
+	
 }

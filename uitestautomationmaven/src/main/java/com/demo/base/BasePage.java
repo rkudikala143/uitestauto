@@ -74,9 +74,9 @@ public class BasePage {
 		return dateformat.format(date);
 	}
 
-	public static String getTitle() {
-		return driver.getTitle();
-	}
+//	public static String getTitle() {
+//		return driver.getTitle();
+//	}
 
 	public static void setUp() {
 		// create an instance for Chrome Driver
