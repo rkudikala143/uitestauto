@@ -55,7 +55,7 @@ public class LoginTest extends BasePage {
 			addResultForTestCase("538", TEST_CASE_FAILED_STATUS, "");
 		}
 	}
-
+  @Parameters("Regression")
 	@Test(testName = "qa")
 	public void verify_user_should_also_have_access_to_the_Forgot_Passwordfrom_the_login_page_to_reset_the_password()
 			throws IOException, APIException {
