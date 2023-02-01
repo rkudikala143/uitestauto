@@ -74,7 +74,7 @@ public class LoginTest extends BasePage {
 			Assert.assertEquals(homePage.getTitle(), "Demo Web Shop. Password Recovery");
 			testLogPass("Verify Forgot Password Page Header : Password recovery");
 			forgotPasswordPage.verifyHeader("Password recovery");
-			homePage.clickLogo();
+			//homePage.clickLogo();
 			//addResultForTestCase("540", TEST_CASE_PASSED_STATUS, "");
 		} catch (Exception e) {
 			testLogFail(e.getMessage());

@@ -3,9 +3,9 @@
 
  <test name="samplePage Test" >
    <classes>
-   <class name="com.demo.tests.LoginTest" >
+   <class name="com.demo.tests.RegisterTest" >
         <methods>
-            <include name = "verifyLoginFunctionalityWithValidData"/>
+            <include name = "verifyIfUserAbleToRegisterToAppWithValidData"/>
         </methods>
     </class>
 </classes>

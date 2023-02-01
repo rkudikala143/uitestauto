@@ -46,35 +46,45 @@ public class LoginPage {
 	/*
 	 * Page Methods for Page Objects
 	 */
-
+   
+   /*
+    * Page object Names
+    */
+   
+   String loginLink =" Click Login link";
+   String emailadd  ="Enter Email address";
+ String pass = "Enter Password";
+ String loginbutton = "Click Login button";
+ String forgotPasslink ="Click on Forgot Password link";
+ String logoutLink = "Click Logout Link";
 	public void clickLoginLink() {
 		BasePage.waitForElement(loginlink);
-		BasePage.click(loginlink);
+		BasePage.click(loginlink, loginLink);
 	}
 
 	public void enterEmailAddress(String email) {
 		BasePage.waitForElement(emailtxt);
-		BasePage.type(emailtxt, email);
+		BasePage.type(emailtxt, email,emailadd);
 	}
 
 	public void enterPassword(String password) {
-		BasePage.type(passtxt, password);
+		BasePage.type(passtxt, password, pass);
 	}
 
 	public void clickLoginButton() {
-		BasePage.submit(loginbtn);
+		BasePage.submit(loginbtn, loginbutton);
 	}
 	public boolean isRegisterLinkDisplayed(){
 		return driver.findElement(registerLink).isDisplayed();
 	}
 	
 	public void clickForgotPasswordLink() {
-		BasePage.click(forgotpasswordlink);
+		BasePage.click(forgotpasswordlink, forgotPasslink);
 	}
 
 	public void clickLogout() {
 		// TODO Auto-generated method stub
 		BasePage.waitForElement(logoutlink);
-		BasePage.click(logoutlink);
+		BasePage.click(logoutlink, logoutLink);
 	}
 }

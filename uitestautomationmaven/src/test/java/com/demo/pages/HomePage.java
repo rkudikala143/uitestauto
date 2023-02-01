@@ -30,20 +30,31 @@ public class HomePage {
 		By loginlink = By.className("ico-login");
 		By registerLink = By.className("ico-register");
 		By logo = By.cssSelector("div.header-logo a img");
+		By logout = By.className("ico-logout");
 		
+		
+		/*
+		 * Name of your objects
+		 */
+		String logoutlink = "Click on Logout link";
+		String registerlink = "Click Register link";
 		
 		public boolean isRegisterLinkDisplayed(){
 			return driver.findElement(registerLink).isDisplayed();
 		}
 		public void clickLoginLink() {
-			BasePage.click(loginlink);
+		//	BasePage.click(loginlink);
 		}
 		public void clickLogo() {
-			BasePage.click(logo);
+			//BasePage.click(logo);
 		}
 		
 		public void clickRegisterLink() {
-		BasePage.click(registerLink);
+		BasePage.click(registerLink, registerlink);
 			
+		}
+		
+		public void clickLogout() {
+			BasePage.click(logout, logoutlink);
 		}
 }

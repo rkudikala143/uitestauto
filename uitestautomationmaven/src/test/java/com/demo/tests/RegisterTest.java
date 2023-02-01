@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.aventstack.extentreports.Status;
@@ -186,6 +187,35 @@ public class RegisterTest extends BasePage {
 		}
 	}
 
-	
-	
+	@DataProvider(name = "registervalid")
+	public Object[][] validUser() {
+		return new Object[][] { { "FirstName1", "LastName1", "emailadddres1@gmail.com", "testpass" },
+				{ "FirstName2", "LastName2", "emailadddres3@gmail.com", "testpass" },
+				{ "FirstName3", "LastName3", "emailadddres4@gmail.com", "testpass" } };
+	}
+
+	@Test(dataProvider = "registervalid")
+	public void verifyIfUserAbleToRegisterToAppWithValidData(String fname, String lname, String email, String pass) {
+		try {
+			homePage = new HomePage(driver);
+			loginPage = new LoginPage(driver);
+			registerPage = new RegisterPage(driver);
+			testlog = reports.createTest("verifyIfUserAbleToRegisterToAppWithValidData");
+			assertEqual(driver.getTitle(), "Demo Web Shop");
+			homePage.clickRegisterLink();
+			assertEqual(getPageTitle(), "Demo Web Shop. Register");
+			registerPage.selectGender("Male");
+			registerPage.enterFirstName(fname);
+			registerPage.enterLastName(lname);
+			registerPage.enterEmailAddress(email);
+			registerPage.enterPassword(pass);
+			registerPage.enterConfirmPass(pass);
+			registerPage.clickOnRegisterbtn();
+			assertEqual(registerPage.isRegisterSuccessfullMessageDisplayed(), "Your registration completed");
+			homePage.clickLogout();
+		} catch (AssertionError e) {
+			testLogFail(e.getMessage());
+		}
+	}
+
 }

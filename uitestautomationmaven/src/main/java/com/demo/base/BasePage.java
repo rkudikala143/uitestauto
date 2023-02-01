@@ -17,6 +17,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.model.Log;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.ChartLocation;
 import com.aventstack.extentreports.reporter.configuration.Theme;
@@ -137,7 +138,7 @@ public class BasePage {
 //	}
 
 	public static void type(By locator, String value, String name) {
-		testLogPass(name);
+		testLogPass(name +" : "+ value);
 		driver.findElement(locator).sendKeys(value);
 	}
 
@@ -177,7 +178,15 @@ public class BasePage {
 	//	Assert.assertTrue(istrue);
 	}
 
-	public static void getText(By h1) {
+	public  String getPageTitle() {
+//		testLogPass(driver.getTitle());
+		return driver.getTitle();
+		
+	}
+	
+	public static String getText(By locator, String name) {
+		testLogPass(name);
+		return driver.findElement(locator).getText();
 	}
 
 	public static void waitForAlert() {

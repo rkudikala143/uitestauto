@@ -33,14 +33,15 @@ public class Homepage extends BasePage{
 		public boolean isRegisterLinkDisplayed(){
 			return driver.findElement(registerLink).isDisplayed();
 		}
-		public void clickLoginLink() {
-			click(loginlink);
-		}
-		public void clickLogo() {
-			click(logo);
-		}
 		
-		public void clickRegisterLink() {
-		click(registerLink);
-		}
+//		public void clickLoginLink() {
+//			//click(loginlink);
+//		}
+//		public void clickLogo() {
+//		//	click(logo);
+//		}
+//		
+//		public void clickRegisterLink() {
+//		click(registerLink);
+//		}
 }

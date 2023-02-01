@@ -58,9 +58,9 @@
            <suiteXmlFiles>
                <suiteXmlFile>${suiteXmlFiles}</suiteXmlFile>
           </suiteXmlFiles>
-          <systemPropertyVariables>
+          <!--<systemPropertyVariables>
 						<propertyName>${groups}</propertyName>
-					</systemPropertyVariables>
+					</systemPropertyVariables>-->
                  </configuration> 
     </plugin>
  <plugin>
