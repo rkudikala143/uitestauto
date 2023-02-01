@@ -86,6 +86,7 @@ public class BasePage {
 		// Maximize the Browser
 		driver.manage().window().maximize();
 	}
+	
 	public static void setUp(String url) {
 		// create an instance for Chrome Driver
 		driver = new ChromeDriver();
@@ -101,11 +102,13 @@ public class BasePage {
 	/*
 	 * click on button, link, partial link, checkbox, radio button
 	 */
-	public static void click(By locator) {
+	public static void click(By locator, String name) {
+	     testLogPass(name);
 		driver.findElement(locator).click();
 	}
 
-	public static void submit(By locator) {
+	public static void submit(By locator, String name) {
+		testLogPass(name);
 		driver.findElement(locator).submit();
 	}
 
@@ -133,7 +136,8 @@ public class BasePage {
 //		}
 //	}
 
-	public static void type(By locator, String value) {
+	public static void type(By locator, String value, String name) {
+		testLogPass(name);
 		driver.findElement(locator).sendKeys(value);
 	}
 
@@ -153,15 +157,15 @@ public class BasePage {
 	 * 
 	 */
 
-	public void testLogPass(String value) {
+	public static void testLogPass(String value) {
 		testlog.log(Status.PASS, value);
 	}
 
-	public void testLogFail(String value) {
+	public static void testLogFail(String value) {
 		testlog.log(Status.FAIL, value);
 	}
 
-	public void testLogError(String value) {
+	public static void testLogError(String value) {
 		testlog.log(Status.ERROR, value);
 	}
 

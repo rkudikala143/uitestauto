@@ -29,3 +29,5 @@ mvn test -Dsurefire.suiteXmlFiles=testng.xml
 * mvn test -Dtest="TheSecondUnitTest#whenTestCase2_thenPrintTest2_1"
 * •mvn test -Dtest="LoginTest#verifyLoginFunctionalityWithValidData"
 
+* mvn clean test -Dgroup=smoke
+

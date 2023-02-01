@@ -32,27 +32,37 @@ public class RegisterPage {
 	By lastNametxt = By.id("LastName");
 	By passTxt= By.id("Password");
 	
+	/*
+	 * Name of Page Object
+	 * 	 */
+	String registerlnk = "Register Link";
+	String emailaddress ="Enter Email Address";
+	String password = "Enter Password";
+	String firstName = "Enter First Name";
+	String lastName ="Enter LastName";
+	String registerbutton ="Click Register Button";
+	
 	public boolean isRegisterLinkDisplayed(){
 		return driver.findElement(registerLink).isDisplayed();
 	}
 	
 	public void enterEmailAddress(String email) {
-		BasePage.type(emailtxt, email);
+		BasePage.type(emailtxt, email, emailaddress);
 	}
 	public void clickOnRegisterbtn() {
-		BasePage.click(registerbtn);
+		BasePage.click(registerbtn, registerbutton);
 	}
 	public void emailErrorMessage() {
 		driver.findElement(emailErrorMsg);
 	}
 	public void enterFirstName(String fname) {
-		BasePage.type(fristNametxt, fname);
+		BasePage.type(fristNametxt, fname, firstName);
 	}
 	public void enterLastName(String lname) {
-		BasePage.type(lastNametxt, lname);
+		BasePage.type(lastNametxt, lname, lastName);
 	}
 	public void enterPassword(String pass) {
-		BasePage.type(passTxt, pass);
+		BasePage.type(passTxt, pass, password);
 	}
 
 	

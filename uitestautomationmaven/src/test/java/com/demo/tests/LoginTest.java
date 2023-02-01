@@ -32,8 +32,7 @@ public class LoginTest extends BasePage {
 	/*
 	 * All Login Page Scenarios or cases to be automated
 	 */
-	@Parameters("smoke_C540")
-	@Test
+	@Test(groups={"sanity","regression"})
 	public void verifyLoginFunctionalityWithValidData() throws IOException, APIException, InterruptedException {
 		try {
 			// verify the title of the home page
@@ -49,14 +48,13 @@ public class LoginTest extends BasePage {
 			loginPage.clickLoginButton();
 			// 1 sec
 			loginPage.clickLogout();
-			addResultForTestCase("538", TEST_CASE_PASSED_STATUS, "");
+			//addResultForTestCase("538", TEST_CASE_PASSED_STATUS, "");
 		} catch (AssertionError e) {
 			testlog.log(Status.FAIL, e.getMessage());
-			addResultForTestCase("538", TEST_CASE_FAILED_STATUS, "");
+			//addResultForTestCase("538", TEST_CASE_FAILED_STATUS, "");
 		}
 	}
-  @Parameters("Regression")
-	@Test(testName = "qa")
+	@Test(groups={"smoke"})
 	public void verify_user_should_also_have_access_to_the_Forgot_Passwordfrom_the_login_page_to_reset_the_password()
 			throws IOException, APIException {
 		try {
@@ -77,10 +75,10 @@ public class LoginTest extends BasePage {
 			testLogPass("Verify Forgot Password Page Header : Password recovery");
 			forgotPasswordPage.verifyHeader("Password recovery");
 			homePage.clickLogo();
-			addResultForTestCase("540", TEST_CASE_PASSED_STATUS, "");
+			//addResultForTestCase("540", TEST_CASE_PASSED_STATUS, "");
 		} catch (Exception e) {
 			testLogFail(e.getMessage());
-			addResultForTestCase("540", TEST_CASE_FAILED_STATUS, "");
+		//	addResultForTestCase("540", TEST_CASE_FAILED_STATUS, "");
 			e.printStackTrace();
 		}
 	}
