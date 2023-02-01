@@ -17,6 +17,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.model.Log;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.ChartLocation;
 import com.aventstack.extentreports.reporter.configuration.Theme;
@@ -36,7 +37,7 @@ public class BasePage {
 	public static WebDriver driver;
 	public static Properties prop;
 	public static FileInputStream fis;
-	public static ExtentHtmlReporter htmlreport = new ExtentHtmlReporter("ExtentReport" + returnUniqueDate() + ".html");
+	public static ExtentHtmlReporter htmlreport = new ExtentHtmlReporter("src\\main\\resources\\reports\\"+"ExtentReport"+ ".html");
 	public static ExtentReports reports = new ExtentReports();
 
 	// This is the object of extentTest class, by which log is generate.
@@ -74,9 +75,9 @@ public class BasePage {
 		return dateformat.format(date);
 	}
 
-	public static String getTitle() {
-		return driver.getTitle();
-	}
+//	public static String getTitle() {
+//		return driver.getTitle();
+//	}
 
 	public static void setUp() {
 		// create an instance for Chrome Driver
@@ -86,6 +87,7 @@ public class BasePage {
 		// Maximize the Browser
 		driver.manage().window().maximize();
 	}
+	
 	public static void setUp(String url) {
 		// create an instance for Chrome Driver
 		driver = new ChromeDriver();
@@ -101,11 +103,13 @@ public class BasePage {
 	/*
 	 * click on button, link, partial link, checkbox, radio button
 	 */
-	public static void click(By locator) {
+	public static void click(By locator, String name) {
+	     testLogPass(name);
 		driver.findElement(locator).click();
 	}
 
-	public static void submit(By locator) {
+	public static void submit(By locator, String name) {
+		testLogPass(name);
 		driver.findElement(locator).submit();
 	}
 
@@ -133,7 +137,8 @@ public class BasePage {
 //		}
 //	}
 
-	public static void type(By locator, String value) {
+	public static void type(By locator, String value, String name) {
+		testLogPass(name +" : "+ value);
 		driver.findElement(locator).sendKeys(value);
 	}
 
@@ -153,15 +158,15 @@ public class BasePage {
 	 * 
 	 */
 
-	public void testLogPass(String value) {
+	public static void testLogPass(String value) {
 		testlog.log(Status.PASS, value);
 	}
 
-	public void testLogFail(String value) {
+	public static void testLogFail(String value) {
 		testlog.log(Status.FAIL, value);
 	}
 
-	public void testLogError(String value) {
+	public static void testLogError(String value) {
 		testlog.log(Status.ERROR, value);
 	}
 
@@ -173,7 +178,15 @@ public class BasePage {
 	//	Assert.assertTrue(istrue);
 	}
 
-	public static void getText(By h1) {
+	public  String getPageTitle() {
+//		testLogPass(driver.getTitle());
+		return driver.getTitle();
+		
+	}
+	
+	public static String getText(By locator, String name) {
+		testLogPass(name);
+		return driver.findElement(locator).getText();
 	}
 
 	public static void waitForAlert() {

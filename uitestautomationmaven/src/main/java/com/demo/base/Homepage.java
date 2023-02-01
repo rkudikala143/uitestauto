@@ -3,7 +3,7 @@ package com.demo.base;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class Homepage {
+public class Homepage extends BasePage{
 	
 	WebDriver driver;
 	
@@ -33,15 +33,15 @@ public class Homepage {
 		public boolean isRegisterLinkDisplayed(){
 			return driver.findElement(registerLink).isDisplayed();
 		}
-		public void clickLoginLink() {
-			BasePage.click(loginlink);
-		}
-		public void clickLogo() {
-			BasePage.click(logo);
-		}
 		
-		public void clickRegisterLink() {
-		BasePage.click(registerLink);
-			
-		}
+//		public void clickLoginLink() {
+//			//click(loginlink);
+//		}
+//		public void clickLogo() {
+//		//	click(logo);
+//		}
+//		
+//		public void clickRegisterLink() {
+//		click(registerLink);
+//		}
 }

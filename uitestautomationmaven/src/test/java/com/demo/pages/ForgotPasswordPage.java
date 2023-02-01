@@ -17,6 +17,6 @@ public class ForgotPasswordPage {
 
 	public void verifyHeader(String string) {
 		// TODO Auto-generated method stub
-		BasePage.getText(h1);
+//		BasePage.getText(h1);
 	}
 }
