@@ -1,36 +1,120 @@
-uitestautomationmaven/test-output/bullet_point.png
-uitestautomationmaven/test-output/collapseall.gif
-uitestautomationmaven/test-output/emailable-report.html
-uitestautomationmaven/test-output/failed.png
-uitestautomationmaven/test-output/index.html
-uitestautomationmaven/test-output/jquery.min.js
-uitestautomationmaven/test-output/navigator-bullet.png
-uitestautomationmaven/test-output/passed.png
-uitestautomationmaven/test-output/skipped.png
-uitestautomationmaven/test-output/testng.css
-uitestautomationmaven/test-output/testng-failed.xml
-uitestautomationmaven/test-output/testng-reports.css
-uitestautomationmaven/test-output/testng-reports.js
-uitestautomationmaven/test-output/testng-reports1.css
-uitestautomationmaven/test-output/testng-reports2.js
-uitestautomationmaven/test-output/testng-results.xml
-uitestautomationmaven/test-output/Default suite/Default test.html
-uitestautomationmaven/test-output/Default suite/Default test.xml
-uitestautomationmaven/test-output/Default suite/testng-failed.xml
-uitestautomationmaven/test-output/junitreports/TEST-com.demo.tests.Books.xml
-uitestautomationmaven/test-output/junitreports/TEST-com.demo.tests.BooksTest.xml
-uitestautomationmaven/test-output/junitreports/TEST-com.demo.tests.ForgotPasswordTest.xml
-uitestautomationmaven/test-output/junitreports/TEST-com.demo.tests.RegisterTest.xml
-uitestautomationmaven/test-output/old/index.html
-uitestautomationmaven/test-output/old/Default suite/classes.html
-uitestautomationmaven/test-output/old/Default suite/Default test.properties
-uitestautomationmaven/test-output/old/Default suite/groups.html
-uitestautomationmaven/test-output/old/Default suite/index.html
-uitestautomationmaven/test-output/old/Default suite/main.html
-uitestautomationmaven/test-output/old/Default suite/methods.html
-uitestautomationmaven/test-output/old/Default suite/methods-alphabetical.html
-uitestautomationmaven/test-output/old/Default suite/methods-not-run.html
-uitestautomationmaven/test-output/old/Default suite/reporter-output.html
-uitestautomationmaven/test-output/old/Default suite/testng.xml.html
-uitestautomationmaven/test-output/old/Default suite/toc.html
+/target/
 
+*.iws
+.DS_Store
+.svn
+.credentials.dat
+.ijwb
+mockpiframe.log
+mockpiframe.log.lck
+junitvmwatcher*.properties
+test-output/st-out
+.*.swp
+*~
+common/build
+/build/
+cpp/iedriver/IEReturnTypes.h
+java/client/src/org/openqa/selenium/ie/IeReturnTypes.java
+java/server/test/org/openqa/selenium/example
+javascript/deps.js
+javascript/node/selenium-webdriver/node_modules/
+javascript/node/selenium-webdriver/lib/atoms/find-elements.js
+javascript/node/selenium-webdriver/lib/atoms/get-attribute.js
+javascript/node/selenium-webdriver/lib/atoms/is-displayed.js
+javascript/node/selenium-webdriver/lib/atoms/mutation-listener.js
+javascript/safari-driver/node_modules/
+javascript/webdriver/devtools/types/
+.idea/vcs.xml
+.idea/workspace.xml
+.idea/dictionaries/
+.idea/scopes/
+.idea/sonarlint/
+.idea/qaplug_profiles.xml
+out
+cpp/IEDriver/sizzle.h
+third_party/gecko-*
+cpp/iedriver/Generated/atoms.h
+cpp/iedriver/sizzle.h
+chromedriver.log
+junit*.properties
+*.rbc
+.rbx
+.yardoc
+rb/.yardoc
+.tm_properties
+maven/*/src
+maven/target
+maven/*/target
+maven/.idea
+maven/*.iml
+maven/*/*.iml
+maven-metadata-.xml
+maven-metadata-.xml.sha1
+node_modules/
+resolver-status.properties
+java/build/
+java/client/build/
+java/client/log.txt
+java/client/iedriver.log
+java/server/build/
+__pycache__
+.tox
+*.pyc
+dist/
+py/selenium/webdriver/common/devtools/*.py
+py/selenium/webdriver/common/devtools/py.typed
+!py/selenium/webdriver/common/devtools/util.py
+py/selenium/webdriver/firefox/amd64/
+py/selenium/webdriver/firefox/webdriver.xpi
+py/selenium/webdriver/firefox/webdriver_prefs.json
+py/selenium/webdriver/firefox/x86/
+py/selenium/webdriver/remote/findElements.js
+py/selenium/webdriver/remote/getAttribute.js
+py/selenium/webdriver/remote/isDisplayed.js
+py/docs/build/
+py/build/
+py/LICENSE
+py/selenium/webdriver/common/linux/
+py/selenium/webdriver/common/windows/
+py/selenium/webdriver/common/macos/
+selenium.egg-info/
+third_party/java/jetty/jetty-repacked.jar
+*.user
+*.cache
+obj/
+*.opensdf
+*.suo
+*.sdf
+*.vs
+*.opendb
+*.VC.db
+*.aps
+launchSettings.json
+Generated/
+ipch/
+/iedriver.log
+/phantomjsdriver.log
+geckodriver.log
+ghostdriver.log
+.tags
+.ruby-version
+GPATH
+GRTAGS
+GSYMS
+GTAGS
+/rb/.bundle
+/rb/.idea
+rb/bin/
+rb/lib/selenium/devtools/v1*
+.sonar/
+.idea/sonarIssues.xml
+.idea/inspectionProfiles/profiles_settings.xml
+.idea/inspectionProfiles/Project_Default.xml
+.idea/misc.xml
+third_party/py/googlestorage/client_secrets.json
+.venv
+venv
+venv3
+py/.idea
+rust/target
+rust/.idea
