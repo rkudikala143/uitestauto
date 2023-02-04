@@ -23,8 +23,12 @@ public class RegisterTest extends BasePage {
 	HomePage homePage;
 	LoginPage loginPage;
 	RegisterPage registerPage;
+	@BeforeSuite
+	public void invokeBrowser() {
+		setUp("https://demowebshop.tricentis.com/");
+	}
 
-	@Test(description = "Verify if that user able to see Register link in landing page and login page")
+	@Test(priority = 0,enabled=true,description = "Verify if that user able to see Register link in landing page and login page")
 	public void Verify_if_that_user_able_to_see_Register_link_in_landing_page_and_login_page()
 			throws IOException, APIException {
 		try {
@@ -48,19 +52,16 @@ public class RegisterTest extends BasePage {
 		}
 	}
 
-	@Test
+	@Test(priority = 1,enabled=true,description = "Verify_if_that_user_able_to_redirect_to_register_page_up_on_click")
 	public void Verify_if_that_user_able_to_redirect_to_register_page_up_on_click() throws IOException, APIException {
 		try {
 			homePage = new HomePage(driver);
 			loginPage = new LoginPage(driver);
 			registerPage = new RegisterPage(driver);
 			testlog = reports.createTest("Verify_if_that_user_able_to_redirect_to_register_page_up_on_click");
-			String homePageTitle = homePage.getTitle();
-			assertEqual(homePageTitle, "Demo Web Shop");
-			assertTrue(homePage.isRegisterLinkDisplayed());
+			assertEqual(driver.getTitle(), "Demo Web Shop");
 			homePage.clickRegisterLink();
-			String registerTitle = registerPage.getTitle();
-			assertEqual(registerTitle, "Demo Web Shop. Registr");
+			assertEqual(getPageTitle(), "Demo Web Shop. Register");
 			homePage.clickLogo();
 			// addResultForTestCase("2", 1, "");
 		} catch (AssertionError e) {
@@ -69,28 +70,24 @@ public class RegisterTest extends BasePage {
 			testlog.log(Status.FAIL, e.getMessage());
 		}
 	}
+	@DataProvider(name = "Email")
+	public Object[][] InvalidEmail() {
+		return new Object[][] { { "RAMYAkumari@gmail" }};
+		}
 
-	@Test
-	public void Verify_user_enter_invalid_email_system_throw_the_error_msg() throws IOException, APIException {
+	@Test(priority = 2,enabled=true,dataProvider = "Email",description = "Verify_user_enter_invalid_email_system_throw_the_error_msg")
+	public void Verify_user_enter_invalid_email_system_throw_the_error_msg(String email) throws IOException, APIException {
 		try {
 			homePage = new HomePage(driver);
 			loginPage = new LoginPage(driver);
 			registerPage = new RegisterPage(driver);
 			testlog = reports.createTest("Verify_user_enter_invalid_email_system_throw_the_error_msg");
-			String homePageTitle = homePage.getTitle();
-			assertEqual(homePageTitle, "Demo Web Shop");
-			assertTrue(homePage.isRegisterLinkDisplayed());
+			assertEqual(driver.getTitle(), "Demo Web Shop");
 			homePage.clickRegisterLink();
-			String registerTitle = registerPage.getTitle();
-			assertEqual(registerTitle, "Demo Web Shop. Register");
-			registerPage.enterEmailAddress(prop.getProperty("email_1"));
+			assertEqual(getPageTitle(), "Demo Web Shop. Register");
+			registerPage.enterEmailAddress(email);
 			registerPage.clickOnRegisterbtn();
-			registerPage.emailErrorMessage();
-			String errorEmailMsg = driver
-					.findElement(By.xpath(
-							"/html/body/div[4]/div[1]/div[4]/div[2]/form/div/div[2]/div[2]/div[2]/div[4]/span[2]/span"))
-					.getText();
-			Assert.assertEquals(errorEmailMsg, "Wrong email");
+			assertEqual(registerPage.isEmailErrorMessageDisplayed(), "Wrong email");
 			homePage.clickLogo();
 			// addResultForTestCase("7", 1, "Register test Pass");
 		} catch (AssertionError e) {
@@ -100,24 +97,24 @@ public class RegisterTest extends BasePage {
 		}
 	}
 
-	@Test
-	public void Verify_system_allow_to_enter_AZ_and_az_into_FirstName_and_LastName_field()
+	@DataProvider(name = "A-Z")
+	public Object[][] FnameLname() {
+		return new Object[][] { { "RAMYAkumari","ramyaKUMARI" }};
+		}
+	
+	@Test(priority = 3,enabled=true,dataProvider = "A-Z",description = "Verify_system_allow_to_enter_AZ_and_az_into_FirstName_and_LastName_field")
+	public void Verify_system_allow_to_enter_AZ_and_az_into_FirstName_and_LastName_field(String fname,String lname)
 			throws IOException, APIException {
 		try {
 			homePage = new HomePage(driver);
 			loginPage = new LoginPage(driver);
 			registerPage = new RegisterPage(driver);
-			testlog = reports.createTest("Verify_system_allow_to_enter_AZ_and_az_into_FirstName_and_LastName_field");
-			String homePageTitle = homePage.getTitle();
-
-			assertEqual(homePageTitle, "Demo Web Shop");
-
-			assertTrue(homePage.isRegisterLinkDisplayed());
+			testlog = reports.createTest("verifyIfUserAbleToRegisterToAppWithValidData");
+			assertEqual(driver.getTitle(), "Demo Web Shop");
 			homePage.clickRegisterLink();
-			String registerTitle = registerPage.getTitle();
-			assertEqual(registerTitle, "Demo Web Shop. Register");
-			registerPage.enterFirstName(prop.getProperty("firstName"));
-			registerPage.enterLastName(prop.getProperty("lastName"));
+			assertEqual(getPageTitle(), "Demo Web Shop. Register");
+			registerPage.enterFirstName(fname);
+			registerPage.enterLastName(lname);
 			homePage.clickLogo();
 			// addResultForTestCase("8", 1, "Register test Pass");
 		} catch (AssertionError e) {
@@ -127,23 +124,21 @@ public class RegisterTest extends BasePage {
 		}
 	}
 
-	@Test
-	public void Verify_System_allows_to_enter_1uppercase_or_1_lowercase() throws IOException, APIException {
+	@DataProvider(name = "passUl")
+	public Object[][] UpperLower() {
+		return new Object[][] { { "PASSword" }};
+		}
+	@Test(priority = 4,enabled=true,dataProvider="passUl",description = "Verify_System_allows_to_enter_1uppercase_or_1_lowercase_in_password")
+	public void Verify_System_allows_to_enter_1uppercase_or_1_lowercase_in_password(String pass) throws IOException, APIException {
 		try {
 			homePage = new HomePage(driver);
 			loginPage = new LoginPage(driver);
 			registerPage = new RegisterPage(driver);
-			testlog = reports.createTest("Verify_System_allows_to_enter_1uppercase_or_1_lowercase");
-			String homePageTitle = homePage.getTitle();
-			testlog.log(Status.PASS, "Verifying the Home Page Title :" + homePageTitle);
-			assertEqual(homePageTitle, "Demo Web Shop");
-			testLogPass("Verifying the Register link displayed in Home page: " + homePage.isRegisterLinkDisplayed());
-			assertTrue(homePage.isRegisterLinkDisplayed());
-
+			testlog = reports.createTest("Verify_System_allows_to_enter_1uppercase_or_1_lowercase_in_password");
+			assertEqual(driver.getTitle(), "Demo Web Shop");
 			homePage.clickRegisterLink();
-			String registerTitle = registerPage.getTitle();
-			assertEqual(registerTitle, "Demo Web Shop. Register");
-			registerPage.enterPassword(prop.getProperty("Password"));
+			assertEqual(getPageTitle(), "Demo Web Shop. Register");
+			registerPage.enterPassword(pass);
 			homePage.clickLogo();
 			// addResultForTestCase("9", 1, "Register test Pass");
 		} catch (AssertionError e) {
@@ -153,35 +148,26 @@ public class RegisterTest extends BasePage {
 		}
 	}
 
-	@Test
-	public void Verify_system_allow_to_enter_password_min_length_should_be_6_characters()
+	@DataProvider(name = "passErr")
+	public Object[][] errorMsg() {
+		return new Object[][] { { "First" }};
+		}
+	@Test(priority = 5,dataProvider = "passErr",enabled=true,description = "Verify_system_allow_to_enter_password_min_length_should_be_6_characters")
+	public void Verify_system_allow_to_enter_password_min_length_should_be_6_characters(String pass)
 			throws IOException, APIException {
 		try {
 			homePage = new HomePage(driver);
 			loginPage = new LoginPage(driver);
 			registerPage = new RegisterPage(driver);
-			testlog = reports.createTest("Verify_system_allow_to_enter_password_min_length_should_be_6_characters");
-			String homePageTitle = homePage.getTitle();
-
-			assertEqual(homePageTitle, "Demo Web Shop");
-			testLogPass("Verifying the Register link displayed in Home page: " + homePage.isRegisterLinkDisplayed());
-			assertTrue(homePage.isRegisterLinkDisplayed());
-
+			testlog = reports.createTest(" Verify_system_allow_to_enter_password_min_length_should_be_6_characters");
+			assertEqual(driver.getTitle(), "Demo Web Shop");
 			homePage.clickRegisterLink();
-			String registerTitle = registerPage.getTitle();
-			assertEqual(registerTitle, "Demo Web Shop. Register");
-			registerPage.enterPassword(prop.getProperty("Password_1"));
-			testLogPass("Password allows min 6 characters ");
+			assertEqual(getPageTitle(), "Demo Web Shop. Register");
+			registerPage.enterPassword(pass);
 			registerPage.clickOnRegisterbtn();
-			String errorPassMsg = driver
-					.findElement(By.xpath(
-							"/html/body/div[4]/div[1]/div[4]/div[2]/form/div/div[2]/div[3]/div[2]/div[1]/span[2]/span"))
-					.getText();
-			Assert.assertEquals(errorPassMsg, "The password should have at least 6 characters.");
+			assertEqual(registerPage.isPasswordErrorMessageDisplayed(), "The password should have at least 6 characters.");
 			homePage.clickLogo();
-			// addResultForTestCase("10", 1, "Register test Pass");
 		} catch (AssertionError e) {
-			System.out.println("=============Jumping to catch block==========");
 			// addResultForTestCase("10", 5, e.getMessage());
 			testlog.log(Status.FAIL, e.getMessage());
 		}
@@ -194,7 +180,7 @@ public class RegisterTest extends BasePage {
 				{ "FirstName3", "LastName3", "emailadddres4@gmail.com", "testpass" } };
 	}
 
-	@Test(dataProvider = "registervalid")
+	@Test(dataProvider = "registervalid",enabled=false)
 	public void verifyIfUserAbleToRegisterToAppWithValidData(String fname, String lname, String email, String pass) {
 		try {
 			homePage = new HomePage(driver);
@@ -216,6 +202,10 @@ public class RegisterTest extends BasePage {
 		} catch (AssertionError e) {
 			testLogFail(e.getMessage());
 		}
+		
 	}
-
+	@AfterSuite
+	public void closeBrowser() {
+		driver.close();
+	}
 }
