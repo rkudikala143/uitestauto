@@ -1,0 +1,39 @@
+uitestautomationmaven/test-output/testng-reports1.css
+uitestautomationmaven/test-output/testng-reports2.js
+uitestautomationmaven/test-output/testng-results.xml
+uitestautomationmaven/test-output/Default suite/Default test.html
+uitestautomationmaven/test-output/Default suite/Default test.xml
+uitestautomationmaven/test-output/Default suite/testng-failed.xml
+uitestautomationmaven/test-output/junitreports/TEST-com.demo.tests.Books.xml
+uitestautomationmaven/test-output/junitreports/TEST-com.demo.tests.RegisterTest.xml
+uitestautomationmaven/test-output/old/index.html
+uitestautomationmaven/test-output/old/Default suite/classes.html
+uitestautomationmaven/test-output/old/Default suite/Default test.properties
+uitestautomationmaven/test-output/old/Default suite/groups.html
+uitestautomationmaven/test-output/old/Default suite/index.html
+uitestautomationmaven/test-output/old/Default suite/main.html
+uitestautomationmaven/test-output/old/Default suite/methods.html
+uitestautomationmaven/test-output/old/Default suite/methods-alphabetical.html
+uitestautomationmaven/test-output/old/Default suite/methods-not-run.html
+uitestautomationmaven/test-output/old/Default suite/reporter-output.html
+uitestautomationmaven/test-output/old/Default suite/testng.xml.html
+uitestautomationmaven/test-output/old/Default suite/toc.html
+uitestautomationmaven/src/test/java/com/demo/pages/BooksPage.java
+uitestautomationmaven/src/test/java/com/demo/tests/Books.java
+uitestautomationmaven/test-output/bullet_point.png
+uitestautomationmaven/test-output/collapseall.gif
+uitestautomationmaven/test-output/emailable-report.html
+uitestautomationmaven/test-output/failed.png
+uitestautomationmaven/test-output/index.html
+uitestautomationmaven/test-output/jquery.min.js
+uitestautomationmaven/test-output/navigator-bullet.png
+uitestautomationmaven/test-output/passed.png
+uitestautomationmaven/test-output/skipped.png
+uitestautomationmaven/test-output/testng.css
+uitestautomationmaven/test-output/testng-failed.xml
+uitestautomationmaven/test-output/testng-reports.css
+uitestautomationmaven/test-output/testng-reports.js
+uitestautomationmaven/.gitignore
+uitestautomationmaven/src/test/java/com/demo/tests/BooksTest.java
+uitestautomationmaven/test-output/junitreports/TEST-com.demo.tests.BooksTest.xml
+uitestautomationmaven/test-output/junitreports/TEST-com.demo.tests.ForgotPasswordTest.xml
