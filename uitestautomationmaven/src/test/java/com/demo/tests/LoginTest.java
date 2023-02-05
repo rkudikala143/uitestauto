@@ -2,15 +2,12 @@ package com.demo.tests;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
-
-import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 import com.aventstack.extentreports.Status;
 import com.demo.base.BasePage;
-import com.demo.base.Homepage;
 import com.demo.pages.ForgotPasswordPage;
 import com.demo.pages.HomePage;
 import com.demo.pages.LoginPage;
@@ -39,55 +36,21 @@ public class LoginTest extends BasePage {
 			testlog.log(Status.PASS, "Click on Login link");
 			loginPage.clickLoginLink();
 			// verify the login page title
-
 			testlog.log(Status.PASS, "Enter Email address : " + prop.getProperty("email"));
 			loginPage.enterEmailAddress(prop.getProperty("email"));
 			testlog.log(Status.PASS, "Enter Password : " + prop.getProperty("password"));
 			loginPage.enterPassword(prop.getProperty("password"));
 			testlog.log(Status.PASS, "Click on Login button");
 			loginPage.clickLoginButton();
-		    loginPage.clickLogout();
+			loginPage.clickLogout();
 			homePage.clickLogo();
-			addResultForTestCase("538", TEST_CASE_PASSED_STATUS, "");
+			// addResultForTestCase("538", TEST_CASE_PASSED_STATUS, "");
 		} catch (AssertionError e) {
 			testlog.log(Status.FAIL, e.getMessage());
-			addResultForTestCase("538", TEST_CASE_FAILED_STATUS, "");
+			// addResultForTestCase("538", TEST_CASE_FAILED_STATUS, "");
 		}
 	}
-
-	@Test(priority = 1, enabled = false)
-	public void verify_user_should_also_have_access_to_the_Forgot_Passwordfrom_the_login_page_to_reset_the_password()
-			throws IOException, APIException {
-		try {
-			homePage = new HomePage(driver);
-			loginPage = new LoginPage(driver);
-			forgotPasswordPage = new ForgotPasswordPage(driver);
-			driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-			// verify the title of the home page
-			testlog = reports.createTest(
-					"verify_user_should_also_have_access_to_the_Forgot_Passwordfrom_the_login_page_to_reset_the_password");
-			testLogPass("verify the home Page title : " + getTitle());
-			assertEqual("Demo Web Shop", getTitle());
-			testLogPass("Click on Login link");
-			loginPage.clickLoginLink();
-			testLogPass("verify Login Page Title : " + getTitle());
-			assertEqual(getTitle(), "Demo Web Shop. Login");
-			testLogPass("Click on Forgot Password link");
-			loginPage.clickForgotPasswordLink();
-			testLogPass("Verify Forgot Password Page Title : " + getTitle());
-			Assert.assertEquals(getTitle(), "Demo Web Shop. Password Recovery");
-			testLogPass("Verify Forgot Password Page Header : Password recovery");
-			forgotPasswordPage.verifyHeader("Password recovery");
-			homePage.clickLogo();
-			addResultForTestCase("540", TEST_CASE_PASSED_STATUS, "");
-		} catch (Exception e) {
-			testLogFail(e.getMessage());
-			addResultForTestCase("540", TEST_CASE_FAILED_STATUS, "");
-			e.printStackTrace();
-		}
-	}
-
-	@Test(enabled = true, priority = 0)
+	@Test(enabled = true, priority = 1)
 	public void Verify_user_able_to_login_to_Xiim_by_using_Forgot_Password()
 			throws IOException, APIException, InterruptedException {
 		try {
@@ -107,39 +70,36 @@ public class LoginTest extends BasePage {
 			loginPage.clickLoginButton();
 			loginPage.isForgotPasswordLinkDisplayed();
 			homePage.clickLogo();
-			addResultForTestCase("545", 1, "");
-
+			// addResultForTestCase("545", 1, "");
 		} catch (AssertionError e) {
-
 			testLogFail(e.getMessage());
-			addResultForTestCase("545", 5, e.getMessage());
+			// addResultForTestCase("545", 5, e.getMessage());
 		}
 	}
 
-	@Test(enabled = true, priority = 1)
+	@Test(enabled = true, priority = 2)
 	public void verifyUserAbleToSeeFollowingLinksIntheLoginPage() throws IOException, APIException {
 		try {
-			 loginPage = new LoginPage(driver);
-			 homePage = new HomePage(driver); // verify the title of the home page 
-			  testlog =reports.createTest("verifyUserAbleToSeeFollowingLinksIntheLoginPage");
-			  testLogPass("Click on Login link"); loginPage.clickLoginLink(); // verify the login page title 
-			  String loginTitle = loginPage.getTitle();
-			  testLogPass("Verify the Login Page Title : " + getTitle());
-			  assertEqual(getTitle(), "Demo Web Shop. Login"); // verify the links in the login page 
-			  testLogPass("verify the links in the login page");
-			  assertTrue(loginPage.isRegisterLinkDisplayed());
-			  assertTrue(loginPage.isForgotPasswordLinkDisplayed()); 
-			  homePage.clickLogo();
-			  addResultForTestCase("547", 1, ""); 
-			  }catch (Exception e) {
-                testLogFail(e.getMessage());
-					addResultForTestCase("547", 5, e.getMessage());
-		 } }
+			loginPage = new LoginPage(driver);
+			homePage = new HomePage(driver); // verify the title of the home page
+			testlog = reports.createTest("verifyUserAbleToSeeFollowingLinksIntheLoginPage");
+			testLogPass("Click on Login link");
+			loginPage.clickLoginLink(); // verify the login page title
+			String loginTitle = loginPage.getTitle();
+			testLogPass("Verify the Login Page Title : " + getTitle());
+			assertEqual(getTitle(), "Demo Web Shop. Login"); // verify the links in the login page
+			testLogPass("verify the links in the login page");
+			assertTrue(loginPage.isRegisterLinkDisplayed());
+			assertTrue(loginPage.isForgotPasswordLinkDisplayed());
+			homePage.clickLogo();
+			// addResultForTestCase("547", 1, "");
+		} catch (Exception e) {
+			testLogFail(e.getMessage());
+			// addResultForTestCase("547", 5, e.getMessage());
+		}
+	}
 
-
-	 
-
-	@Test(enabled = true,priority = 2)
+	@Test(enabled = true, priority = 3)
 	public void verifyIfUserAbleToSeeTheFollowingFieldsInTheLoginPage()
 			throws IOException, APIException, InterruptedException {
 		try {
@@ -162,13 +122,14 @@ public class LoginTest extends BasePage {
 			loginPage.isForgotPasswordOptionDispalyed();
 			loginPage.isLoginButtonDispalyed();
 			homePage.clickLogo();
-			addResultForTestCase("548", 1, "");
+			// addResultForTestCase("548", 1, "");
 		} catch (AssertionError e) {
 			testLogFail(e.getMessage());
-			addResultForTestCase("548", 5, e.getMessage());
-			testLogFail(e.getMessage());
+			// addResultForTestCase("548", 5, e.getMessage());
 		}
-	}@Test(enabled = true,priority =3)
+	}
+
+	@Test(enabled = true, priority = 4)
 	public void Verify_user_able_to_see_message_this_accounts_has_exceeded_the_login_attempts_and_has_been_locked()
 			throws IOException, APIException, InterruptedException {
 		try {
@@ -177,7 +138,8 @@ public class LoginTest extends BasePage {
 				basePage = new BasePage();
 				homePage = new HomePage(driver);
 				// verify the title of the home page
-				testlog = reports.createTest("Verify_user_able_to_see_message_this_accounts_has_exceeded_the_login_attempts_and_has_been_locked");
+				testlog = reports.createTest(
+						"Verify_user_able_to_see_message_this_accounts_has_exceeded_the_login_attempts_and_has_been_locked");
 				String homePageTitle = homePage.getTitle();
 				testLogPass("Verifying the Home Page Title :" + homePageTitle);
 				Assert.assertEquals(homePageTitle, "Demo Web Shop");
@@ -186,24 +148,21 @@ public class LoginTest extends BasePage {
 				loginPage.getTitle();
 				testLogPass("Verify the Login Page Title :" + getTitle());
 				assertEqual(getTitle(), "Demo Web Shop. Login");
-                testLogPass("Enter Email address : " + prop.getProperty("email"));
-                loginPage.enterEmailAddress(prop.getProperty("email"));
+				testLogPass("Enter Email address : " + prop.getProperty("email"));
+				loginPage.enterEmailAddress(prop.getProperty("email"));
 				testLogPass("Enter Password : " + prop.getProperty("wrongPass"));
 				loginPage.enterPassword(prop.getProperty("wrongPass"));
 				testLogPass("Click on Login button");
 				loginPage.clickLoginButton();
 				homePage.clickLogo();
 			}
-				
-			    addResultForTestCase("545", 1, "");
-			
+			// addResultForTestCase("545", 1, "");
 		} catch (AssertionError e) {
 			testLogFail(e.getMessage());
-			addResultForTestCase("545", 5, e.getMessage());
-			
+			// addResultForTestCase("545", 5, e.getMessage());
 		}
 	}
-
+	
 	@AfterSuite
 	public void closeBrowser() {
 		reports.flush();
