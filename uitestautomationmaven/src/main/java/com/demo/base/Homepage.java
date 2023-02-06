@@ -44,4 +44,6 @@ public class Homepage extends BasePage{
 //		public void clickRegisterLink() {
 //		click(registerLink);
 //		}
+		
+		
 }

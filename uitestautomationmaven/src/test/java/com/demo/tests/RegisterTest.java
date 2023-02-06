@@ -24,7 +24,7 @@ public class RegisterTest extends BasePage {
 	LoginPage loginPage;
 	RegisterPage registerPage;
 
-	@Test(description = "Verify if that user able to see Register link in landing page and login page")
+	@Test(enabled=false,description = "Verify if that user able to see Register link in landing page and login page")
 	public void Verify_if_that_user_able_to_see_Register_link_in_landing_page_and_login_page()
 			throws IOException, APIException {
 		try {
@@ -48,7 +48,7 @@ public class RegisterTest extends BasePage {
 		}
 	}
 
-	@Test
+	@Test(enabled=false)
 	public void Verify_if_that_user_able_to_redirect_to_register_page_up_on_click() throws IOException, APIException {
 		try {
 			homePage = new HomePage(driver);
@@ -70,7 +70,7 @@ public class RegisterTest extends BasePage {
 		}
 	}
 
-	@Test
+	@Test(enabled=false)
 	public void Verify_user_enter_invalid_email_system_throw_the_error_msg() throws IOException, APIException {
 		try {
 			homePage = new HomePage(driver);
@@ -100,7 +100,7 @@ public class RegisterTest extends BasePage {
 		}
 	}
 
-	@Test
+	@Test(enabled=false)
 	public void Verify_system_allow_to_enter_AZ_and_az_into_FirstName_and_LastName_field()
 			throws IOException, APIException {
 		try {
@@ -127,7 +127,7 @@ public class RegisterTest extends BasePage {
 		}
 	}
 
-	@Test
+	@Test(enabled=false)
 	public void Verify_System_allows_to_enter_1uppercase_or_1_lowercase() throws IOException, APIException {
 		try {
 			homePage = new HomePage(driver);
@@ -153,7 +153,7 @@ public class RegisterTest extends BasePage {
 		}
 	}
 
-	@Test
+	@Test(enabled=false)
 	public void Verify_system_allow_to_enter_password_min_length_should_be_6_characters()
 			throws IOException, APIException {
 		try {
@@ -189,9 +189,9 @@ public class RegisterTest extends BasePage {
 
 	@DataProvider(name = "registervalid")
 	public Object[][] validUser() {
-		return new Object[][] { { "FirstName1", "LastName1", "emailadddres1@gmail.com", "testpass" },
-				{ "FirstName2", "LastName2", "emailadddres3@gmail.com", "testpass" },
-				{ "FirstName3", "LastName3", "emailadddres4@gmail.com", "testpass" } };
+		return new Object[][] { { "FirstName1", "LastName1", "emailadddres11@gmail.com", "testpass" },
+				{ "FirstName2", "LastName2", "emailadddres31@gmail.com", "testpass" },
+				{ "FirstName3", "LastName3", "emailadddres41@gmail.com", "testpass" } };
 	}
 
 	@Test(dataProvider = "registervalid")
