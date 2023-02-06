@@ -47,6 +47,11 @@
             <version>1.1.1</version>
         </dependency>
 
+<dependency>
+    <groupId>com.jsexecutor</groupId>
+    <artifactId>jsexecutor-core</artifactId>
+    <version>1.0.8</version>
+</dependency>
     </dependencies> <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
  <build>  
 <plugins>
