@@ -14,6 +14,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.BeforeSuite;
+
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
@@ -87,7 +89,7 @@ public class BasePage {
 		// Maximize the Browser
 		driver.manage().window().maximize();
 	}
-	
+
 	public static void setUp(String url) {
 		// create an instance for Chrome Driver
 		driver = new ChromeDriver();
