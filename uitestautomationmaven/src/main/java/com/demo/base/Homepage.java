@@ -30,18 +30,27 @@ public class Homepage extends BasePage{
 		By logo = By.cssSelector("div.header-logo a img");
 		
 		
-		public boolean isRegisterLinkDisplayed(){
+		public boolean isRegisterLinkDisplayed()
+		{
 			return driver.findElement(registerLink).isDisplayed();
 		}
 		
+		public boolean isloginLinkDisplayed()
+		{
+			return driver.findElement(loginlink).isDisplayed();
+		}
 //		public void clickLoginLink() {
 //			//click(loginlink);
 //		}
-//		public void clickLogo() {
-//		//	click(logo);
-//		}
+		//public void clickLogo() {
+  	//(logo);
+	//}
 //		
 //		public void clickRegisterLink() {
 //		click(registerLink);
 //		}
+		public void clickLogo(){
+			
+		driver.findElement(logo).click();	
+		}
 }
