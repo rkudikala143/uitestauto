@@ -120,9 +120,7 @@ public class BasePage {
 		driver.findElement(locator).submit();
 	}
 
-	/*
-	 * type data into text fields
-	 */
+	
 //	@AfterMethod
 //	public void getResult(ITestResult result) throws Exception {
 //		if (result.getStatus() == ITestResult.FAILURE) {
