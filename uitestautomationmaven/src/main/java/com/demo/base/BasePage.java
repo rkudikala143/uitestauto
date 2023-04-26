@@ -12,6 +12,7 @@ import java.util.Properties;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -84,9 +85,12 @@ public class BasePage {
 	
 	public static void setUp() {
 		// create an instance for Chrome Driver
-		driver = new ChromeDriver();
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--remote-allow-origins=*");
+		 driver = new ChromeDriver(options);
+	
 		// Navigate to site url
-		driver.get(prop.getProperty("prodenvurl"));
+		driver.get("https://demowebshop.tricentis.com/");
 		// Maximize the Browser
 		driver.manage().window().maximize();
 	}
