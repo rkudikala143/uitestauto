@@ -76,7 +76,7 @@ public class BooksTest extends BasePage {
 	}
 	@AfterSuite
 	public void closeBrowser() {
-		driver.quit();
+		driver.close();
 	}
 
 	
