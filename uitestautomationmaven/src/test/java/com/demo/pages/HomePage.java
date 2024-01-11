@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import com.demo.base.BasePage;
-
 public class HomePage {
 	
 	WebDriver driver;
@@ -33,12 +32,13 @@ public class HomePage {
 		By logout = By.className("ico-logout");
 		
 		
+		
 		/*
 		 * Name of your objects
 		 */
 		String logoutlink = "Click on Logout link";
 		String registerlink = "Click Register link";
-		
+		String logolink="Click on logo";
 		public boolean isRegisterLinkDisplayed(){
 			return driver.findElement(registerLink).isDisplayed();
 		}
@@ -46,7 +46,7 @@ public class HomePage {
 		//	BasePage.click(loginlink);
 		}
 		public void clickLogo() {
-			//BasePage.click(logo);
+			BasePage.click(logo, logolink);
 		}
 		
 		public void clickRegisterLink() {

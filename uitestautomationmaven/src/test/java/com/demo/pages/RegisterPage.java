@@ -36,7 +36,7 @@ public class RegisterPage {
 	By confirmpasstxt = By.id("ConfirmPassword");
 	By genderMale = By.name("Gender");
 	By registerResult = By.className("result");
-
+   By passerror = By.xpath("/html/body/div[4]/div[1]/div[4]/div[2]/form/div/div[2]/div[3]/div[2]/div[1]/span[2]/span");
 	/*
 	 * Name of Page Object
 	 */
@@ -49,7 +49,9 @@ public class RegisterPage {
 	String genderMalerd = "Select Gender Male";
 	String confirmpass = "Enter Confirm Password";
 	String registerresults = "Successfull Registration Message";
-
+   String PassError = "Password Error Message";
+   String emailError="Email error Message";
+   
 	public boolean isRegisterLinkDisplayed() {
 		return driver.findElement(registerLink).isDisplayed();
 	}
@@ -61,11 +63,6 @@ public class RegisterPage {
 	public void clickOnRegisterbtn() {
 		BasePage.click(registerbtn, registerbutton);
 	}
-
-	public void emailErrorMessage() {
-		driver.findElement(emailErrorMsg);
-	}
-
 	public void enterFirstName(String fname) {
 		BasePage.type(fristNametxt, fname, firstName);
 	}
@@ -87,8 +84,13 @@ public class RegisterPage {
 		BasePage.type(confirmpasstxt, confirmpas, confirmpass);
 
 	}
-
 	public String isRegisterSuccessfullMessageDisplayed() {
 		return BasePage.getText(registerResult, registerresults);
+	}
+	public String isPasswordErrorMessageDisplayed() {
+		return BasePage.getText(passerror, PassError);
+	}
+	public String isEmailErrorMessageDisplayed() {
+		return BasePage.getText(emailErrorMsg, emailError);
 	}
 }
